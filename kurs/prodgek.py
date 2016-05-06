@@ -20,7 +20,7 @@ zetT=False
 chance_human=40
 chance_stone=150
 maxT=0
-#sound = pygame.mixer.Sound("C:\\Users\\Влад\\Desktop\\python\\kurs\\iponomaty.wav")
+sound = pygame.mixer.Sound("C:\\Users\\Влад\\Desktop\\python\\kurs\\iponomaty.wav")
 #класс игрока
 class You(pygame.sprite.Sprite):
     def __init__(self):
@@ -85,7 +85,7 @@ while not done:
         t +=len(people_hit_list)
         if t> maxT:
             maxT=t
-    if i%chance_human==0:
+   # if i%chance_human==0:
         pp=people()
         zx=int(random.randrange(20,480))
         zy=int(0-150)
