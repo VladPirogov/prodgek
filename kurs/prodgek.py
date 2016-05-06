@@ -20,7 +20,7 @@ zetT=False
 chance_human=40
 chance_stone=150
 maxT=0
-#click_sound = pygame.mixer.Sound("C:\\Users\\Влад\\Desktop\\python\\kurs\\iponomaty.wav")
+#sound = pygame.mixer.Sound("C:\\Users\\Влад\\Desktop\\python\\kurs\\iponomaty.wav")
 #класс игрока
 class You(pygame.sprite.Sprite):
     def __init__(self):
