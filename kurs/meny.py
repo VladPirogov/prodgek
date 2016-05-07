@@ -3,33 +3,47 @@
 # quitbutton.py
 
 import sys
-from PyQt4 import QtGui, QtCore
-class MainWindow(QtGui.QMainWindow):
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
+from PyQt5.QtCore import QCoreApplication
+
+
+class Example(QWidget):
+
     def __init__(self):
+        super().__init__()
+
+        self.ini()
+        self.one()
+        self.two()
+        self.setGeometry(300, 300, 300, 220)
+        self.setWindowTitle('main')
+        self.show()
+    def one(self):
+
+        onebtn = QPushButton('Start', self)
+        onebtn.clicked.connect(QCoreApplication.instance().quit)
+        onebtn.resize(onebtn.sizeHint())
+        onebtn.move(70, 50)
+
+    def two(self):
+
+        twobtn = QPushButton('Record list', self)
+        twobtn.clicked.connect(QCoreApplication.instance().quit)
+        twobtn.resize(twobtn.sizeHint())
+        twobtn.move(70, 80)
+
+    def ini(self):
+
+        qbtn = QPushButton('Quit', self)
+        qbtn.clicked.connect(QCoreApplication.instance().quit)
+        qbtn.resize(qbtn.sizeHint())
+        qbtn.move(70, 120)
 
 
-        QtGui.QWidget.__init__(self, parent=None)
 
-        self.setGeometry(400,100, 650, 600)
-        self.setWindowTitle('32KGame')
+if __name__ == '__main__':
 
-        quit = QtGui.QPushButton(u'Close', self)
-        quit.setGeometry(260, 400, 150, 100) #1.X 2.Y 3.Len 4.size
-        self.connect(quit, QtCore.SIGNAL('clicked()'),
-        QtGui.qApp, QtCore.SLOT('quit()'))
-
-        open = QtGui.QPushButton(u"Start",self)
-        open.setGeometry(260, 10, 150, 100)
-        self.connect(open, QtCore.SIGNAL('clicked()'),
-        QtGui.qApp, QtCore.SLOT('start()'))
-
-
-        options = QtGui.QPushButton(u"Options",self)
-        options.setGeometry(260, 140, 150, 100)
-        self.connect(options, QtCore.SIGNAL('clicked()'),
-        QtGui.qApp, QtCore.SLOT('Options()'))
-
-faq = QtGui.QPushButton(u"Options",self)
-faq.setGeometry(260, 270, 150, 100)
-self.connect(faq, QtCore.SIGNAL('clicked()'),
-QtGui.qApp, QtCore.SLOT('FAQ()'))
+    app = QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
