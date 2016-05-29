@@ -25,7 +25,6 @@ def game(self):
     chance_stone=150
     maxT=0
     f = open('Record lis', 'a')
-    #sound = pygame.mixer.Sound("C:\\Users\\Влад\\Desktop\\python\\kurs\\iponomaty.wav")
     #класс игрока
     class You(pygame.sprite.Sprite):
         def __init__(self):
@@ -129,11 +128,17 @@ def game(self):
         screen.blit(background, (0,0))
         all_sprites_list.draw(screen)
         Is.fill((45,88,40))
-        Is.blit(info.render("point: "+ str(t),1,(0,0,200)),(0,0))
+        if t < 0:
+            Is.blit(info.render(" You lose! Maximum per game: "+ str(maxT),1,(0,0,200)),(0,0))
+        elif t<100:
+            Is.blit(info.render("point: "+ str(t),1,(0,0,200)),(0,0))
+        elif t==100 or t>100:
+            zetT = True
+            f.write(str(t) + '\n')
+            Is.blit(info.render("point: "+ str(t) + " You Won! Victory! ",1,(0,0,200)),(0,0))
         screen.blit(Is,(0,500))
         pygame.display.flip()
         clock.tick(24)
-    f.write(str(maxT) + '\n')
     pygame.QUIT()
     pygame.font.quit()
     f.close()
