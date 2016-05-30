@@ -1,5 +1,5 @@
 import unittest
-from prodgek.classes.You import player
+from .prodgek import game
 import pygame
 
 pygame.init()
