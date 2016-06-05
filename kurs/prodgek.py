@@ -129,13 +129,16 @@ def game(self):
         all_sprites_list.draw(screen)
         Is.fill((45,88,40))
         if t < 0:
-            Is.blit(info.render(" You lose! Maximum per game: "+ str(maxT),1,(0,0,200)),(0,0))
-        elif t<100:
-            Is.blit(info.render("point: "+ str(t),1,(0,0,200)),(0,0))
-        elif t==100 or t>100:
+            Is.blit(info.render(" You are lose! Maximum per game: "+ str(maxT),1,(0,0,200)),(0,0))
+        elif zetT == True and t<16:
+            Is.blit(info.render(" You are lose! Maximum per game: "+ str(maxT),1,(0,0,200)),(0,0))
+
+        elif t==16 or t>16:
             zetT = True
             f.write(str(t) + '\n')
             Is.blit(info.render("point: "+ str(t) + " You Won! Victory! ",1,(0,0,200)),(0,0))
+        else :
+            Is.blit(info.render("point: "+ str(t),1,(0,0,200)),(0,0))
         screen.blit(Is,(0,500))
         pygame.display.flip()
         clock.tick(24)
